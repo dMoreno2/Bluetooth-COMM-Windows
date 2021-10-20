@@ -20,7 +20,7 @@ recievedSerial = serial.Serial(port="COM5",stopbits=serial.STOPBITS_ONE)
 recievedSerial.write(str.encode('Start\r\n'))
 
 thisDevicesName = 'Client'
-path = (r"C:\Users\Moreno\Desktop\MIT\Year 2\Research in IT Practice\Assessments\2\new.csv")
+path = (r"/Results.csv")
 f = open(path, 'w',encoding='UTF8')
 
 _ID = '' #this devices ID
