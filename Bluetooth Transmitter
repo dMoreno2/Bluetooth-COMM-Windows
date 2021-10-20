@@ -15,19 +15,22 @@ if userInput =='1':
     print("here")
 else:
     clientOrBeacon = 0
+
 try:
-    recievedSerial = serial.Serial(port="COM5",9600,stopbits=serial.STOPBITS_ONE)
+    recievedSerial = serial.Serial(port="COM4", stopbits=serial.STOPBITS_ONE)
 except:
-    recievedSerial = serial.Serial(("/dev/rfcomm1", 9600,stopbits=serial.STOPBITS_ONE)
-    
+    recievedSerial = serial.Serial("/dev/rfcomm1", 9600,stopbits=serial.STOPBITS_ONE)
+
 recievedSerial.write(str.encode('Start\r\n'))
 
-path = (r"/Results.csv")
-f = open(path, 'w',encoding='UTF8')
+header = ['ID', 'Connected ID', 'My MAC', 'Connected MAC', 'Date Sent', 'Date Received', 'Payload Sent', 'Payload Received']
+f = open('Results.CSV','w', newline='')
+writer = csv.writer(f)
+writer.writerow(header)
 
-_ID = '' #this devices ID
+_ID = 'Client' #this devices ID
 _CID = '' #id of connected device
-_MYMAC = '00:00:00:00:00:00:00' #mac address of this device
+_MYMAC = '34:cf:f6:d0:89:db' #mac address of this device
 _RECEIVEMAC = '' #mac address of connected device
 _DATE = ''  #date sent
 _RDATE = ''  #date received
@@ -42,9 +45,11 @@ def OnKeyExit():
     while messaging == True:
         userInput = input()
         if userInput =='q':
+            messaging = False
             print("Program Execution Ended")
 
 def CSVOutput():
+#def CSVOutput(sentMSG,receivedMSG):
     global _ID #this devices ID
     global _CID #id of connected device
     global _MYMAC #mac address of this device
@@ -53,15 +58,14 @@ def CSVOutput():
     global _RDATE #date received
     global _PAYLOAD #data sent
     global _RPAYLOAD  #data received
-    header = ['ID', 'Connected ID', 'My MAC', 'Connected MAC', 'Date Sent', 'Date Received', 'Payload Sent', 'Payload Received']
-    data = [_ID,_CID,_MYMAC,_RECEIVEMAC,_DATE,_RDATE,_PAYLOAD,_RPAYLOAD]
-    writer = csv.writer(f)
-
-    # write the header
-    writer.writerow(header)
+    #f = open(path, 'w',encoding='UTF8')
+    #header = ['Sent', 'Received']
+    #data = [sentMSG,receivedMSG]
+    #writer = csv.writer(f)
 
     # write the data
-    writer.writerow(data)
+    writer.writerow([_ID,_CID,_MYMAC,_RECEIVEMAC,_DATE,_RDATE,_PAYLOAD,_RPAYLOAD])
+    #f.close()
 
 def SendAndReceive():
     global _ID
@@ -71,22 +75,28 @@ def SendAndReceive():
     global clientOrBeacon
 
     receivedMessage = ''
-    if(clientOrBeacon == 1):
-        recievedSerial.write(str.encode('MORE STARTING\r\n'))
-        clientOrBeacon = ''
-    elif clientOrBeacon == 0:
-        receivedMessage = recievedSerial.readline()
-        clientOrBeacon = ''
     _PAYLOAD = (time.time() * 76)% 99999
     seconds = time.time()
     _DATE = str(time.ctime(seconds))
     message =  _ID+'|'+_MYMAC+'|'+_DATE+'|'+str(_PAYLOAD) +'|'+ '\r\n'
-    print(message)
-    recievedSerial.write(str.encode(message))
+
+    if(clientOrBeacon == 1):
+        recievedSerial.write(str.encode(message))
+        while receivedMessage =='':
+            receivedMessage = recievedSerial.readline()
+
+    elif clientOrBeacon == 0:
+        while receivedMessage == '':
+            receivedMessage = recievedSerial.readline()
+        recievedSerial.write(str.encode(message))
+    
+    print(receivedMessage)
     time.sleep(5)
-    receivedMessage = recievedSerial.readline()
+    #receivedMessage = recievedSerial.readline()
     #print(receivedMessage)
     ProcessReceived(receivedMessage)
+    #CSVOutput(message,receivedMessage)
+
 
 def ProcessReceived(Message):
     global _CID
@@ -95,7 +105,7 @@ def ProcessReceived(Message):
     global _RPAYLOAD
     if Message !='':
         decodedMessage = Message.decode('utf-8').strip('\r\n')
-        message = decodedMessage.strip().split('|')
+        message = decodedMessage.split("|")
         _CID = message[0]
         _RECEIVEMAC = message[1]
         _RDATE = message[2]
@@ -110,5 +120,4 @@ while messaging == True:
 
 #OnKeyExit.join()
 #exit()
-
-
+f.close()
