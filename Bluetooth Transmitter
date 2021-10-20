@@ -15,8 +15,11 @@ if userInput =='1':
     print("here")
 else:
     clientOrBeacon = 0
-
-recievedSerial = serial.Serial(port="COM5",stopbits=serial.STOPBITS_ONE)
+try:
+    recievedSerial = serial.Serial(port="COM5",9600,stopbits=serial.STOPBITS_ONE)
+except:
+    recievedSerial = serial.Serial(("/dev/rfcomm1", 9600,stopbits=serial.STOPBITS_ONE)
+    
 recievedSerial.write(str.encode('Start\r\n'))
 
 path = (r"/Results.csv")
