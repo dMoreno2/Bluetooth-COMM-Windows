@@ -14,7 +14,7 @@ To start using this follow these steps to setup it up on windows.
       py -3 "setup.py"
        
 5. Now, download this repo and extract it where you would like.
-6. Open Bluetooth Transmitter.py and change the <a href="" style="color:orange">COM</a> port to the COMM port you have setup.
+6. Open Bluetooth Transmitter.py and change the <a style="color:orange">COM</a> port to the COMM port you have setup.
 7. Then, using Command Promt, change into the directory where the extracted files are.
 8. In Command Promt you enter the following to start the program: py -3 "Bluetooth Transmitter.py"
 9. Using another device setup using these steps, connect ot the device via Bluetooth.
