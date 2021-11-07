@@ -24,3 +24,4 @@ To start using this follow these steps to setup it up on windows.
 
 
 This program was made to test the security of Bluetooth transmissions and how succeptible they are to interception.
+The Bluetooth_Listener_AttackDevice is designed for a Linux device to intercep and requires the MAC address of the device it is trying to connect to, to be entered. This does not currently capture information.
