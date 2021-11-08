@@ -1,0 +1,8 @@
+﻿  Server-Client Message System.cpp
+C:\Users\Moreno\Desktop\MIT\Year 2\Research in IT Practice\Assessments\2\Server Client Messaging System\Server-Client Message System\Server-Client Message System.h(19,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating code
+  8 of 249 functions ( 3.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    10 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Server-Client Message System.vcxproj -> C:\Users\Moreno\Desktop\MIT\Year 2\Research in IT Practice\Assessments\2\Server Client Messaging System\Release\Server-Client Message System.exe

@@ -1,0 +1,5 @@
+﻿  Server-Client Message System.cpp
+C:\Users\Moreno\Desktop\MIT\Year 2\Research in IT Practice\Assessments\2\Server Client Messaging System\Server-Client Message System\Server-Client Message System.h(19,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\Moreno\Desktop\MIT\Year 2\Research in IT Practice\Assessments\2\Server Client Messaging System\Server-Client Message System\Server-Client Message System.cpp(257,15): warning C4553: '==': result of expression not used; did you intend '='?
+C:\Users\Moreno\Desktop\MIT\Year 2\Research in IT Practice\Assessments\2\Server Client Messaging System\Server-Client Message System\Server-Client Message System.cpp(341,34): warning C4312: 'type cast': conversion from 'int' to 'char *' of greater size
+  Server-Client Message System.vcxproj -> C:\Users\Moreno\Desktop\MIT\Year 2\Research in IT Practice\Assessments\2\Server Client Messaging System\x64\Debug\Server-Client Message System.exe

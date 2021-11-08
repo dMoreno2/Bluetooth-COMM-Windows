@@ -1,0 +1,16 @@
+Client- Connection Failed  line: 155 Error Code: 10050 Fri Oct 29 06:39:12 2021
+
+Client- Connection Failed  line: 155 Error Code: 10050 Fri Oct 29 06:41:41 2021
+
+Client- Connection Failed  line: 155 Error Code: 10050 Fri Oct 29 06:45:06 2021
+
+Client- Connection Failed  line: 156 Error Code: 10050 Sat Oct 30 07:19:27 2021
+
+Client- Connection Failed  line: 156 Error Code: 10060 Sat Oct 30 07:36:17 2021
+
+Client- Connection Failed  line: 156 Error Code: 10060 Sat Oct 30 08:35:04 2021
+
+Client- Connection Failed  line: 156 Error Code: 10022 Sat Oct 30 08:35:12 2021
+
+Client- Connection Failed  line: 157 Error Code: 10060 Sat Oct 30 10:08:56 2021
+
