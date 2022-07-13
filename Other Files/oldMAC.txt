@@ -1,0 +1,12 @@
+DC:A6:32:EA:7F:52 
+
+94:65:2D:D1:57:47
+
+pi@pi:~ $ sudo -i
+root@pi:~# systemctl start bluetooth
+root@pi:~# bluetoothctl > scan on
+root@pi:~# hcitool cmd 0x3f 0x0001 0x94 0x65 0x2D 0xD1 0x57 0x47
+
+
+hcitool		cmd		0x3f	 	0x0001		 	0x94 0x65 0x2D 0xD1 0x57 0x47
+toolset		command		change MAC	rewrite command		hex break of MAC address
